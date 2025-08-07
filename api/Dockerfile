@@ -25,4 +25,4 @@ SHELL ["/bin/bash", "-c"]
 
 CMD ["conda", "run", "-n", "MGPipe", "bowtie2", "--version"]
 
-##4
+##5
