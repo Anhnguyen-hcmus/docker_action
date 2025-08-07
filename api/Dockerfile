@@ -16,14 +16,9 @@
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 FROM continuumio/miniconda3
 
-# Copy conda environment file
 COPY env.yml /tmp/env.yml
-
-# Create the environment
 RUN conda env create -f /tmp/env.yml
 
-# Set shell to use conda environment
-SHELL ["conda", "run", "-n", "env", "/bin/bash", "-c"]
+SHELL ["/bin/bash", "-c"]
 
-# Default command
-CMD ["bowtie2", "--version"]
+CMD ["conda", "run", "-n", "env", "bowtie2", "--version"]
