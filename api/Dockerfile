@@ -19,8 +19,10 @@ FROM continuumio/miniconda3
 COPY env.yml /tmp/env.yml
 RUN conda env create -f /tmp/env.yml
 
+RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bowtie2 /usr/local/bin/bowtie2
+
 SHELL ["/bin/bash", "-c"]
 
-CMD ["conda", "run", "-n", "env", "bowtie2", "--version"]
+CMD ["conda", "run", "-n", "bowtie_2.5.4", "bowtie2", "--version"]
 
-##3
+##4
