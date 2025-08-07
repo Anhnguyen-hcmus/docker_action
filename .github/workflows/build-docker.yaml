@@ -5,7 +5,6 @@ on:
       - main
     paths:
       - 'api/Dockerfile'
-      - 'front-end-nextjs/Dockerfile'
 
 jobs:
   publish_images:
@@ -16,9 +15,7 @@ jobs:
       - name: build image
         run: |
           docker build ./api/ -t anhnguyenhcmus/bowtie2:2.5.4
-          docker build ./front-end-nextjs/ -t anhnguyenhcmus/bowtie2:2.5.4-js
       - name: push image to docker hub
         run: |
           docker login -u anhnguyenhcmus -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push anhnguyenhcmus/bowtie2:2.5.4
-          docker push anhnguyenhcmus/bowtie2:2.5.4-js

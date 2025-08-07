@@ -22,3 +22,5 @@ RUN conda env create -f /tmp/env.yml
 SHELL ["/bin/bash", "-c"]
 
 CMD ["conda", "run", "-n", "env", "bowtie2", "--version"]
+
+##3
