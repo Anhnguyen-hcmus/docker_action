@@ -20,9 +20,11 @@ COPY env.yml /tmp/env.yml
 RUN conda env create -f /tmp/env.yml
 
 RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bowtie2 /usr/local/bin/bowtie2
+RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/samtools /usr/local/bin/samtools
+RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bedtools /usr/local/bin/bedtools
 
 SHELL ["/bin/bash", "-c"]
 
 CMD ["conda", "run", "-n", "MGPipe", "bowtie2", "--version"]
 
-##5
+##6
