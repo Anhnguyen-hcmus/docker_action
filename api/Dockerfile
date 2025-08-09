@@ -27,4 +27,4 @@ SHELL ["/bin/bash", "-c"]
 
 CMD ["conda", "run", "-n", "bowtie_2.5.4", "bowtie2", "--version"]
 
-##updating samtools and bedtools
+##updating samtools and bedtools -2
