@@ -25,6 +25,6 @@ RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bedtools /usr/local/bin/bedtools
 
 SHELL ["/bin/bash", "-c"]
 
-CMD ["conda", "run", "-n", "MGPipe", "bowtie2", "--version"]
+CMD ["conda", "run", "-n", "bowtie_2.5.4", "bowtie2", "--version"]
 
-##6
+##updating samtools and bedtools
