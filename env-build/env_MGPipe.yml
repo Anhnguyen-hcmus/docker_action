@@ -1,4 +1,4 @@
-name: MGPipe
+name: /data/vinamit/ENV/MGPipe
 channels:
   - biobakery
   - conda-forge
