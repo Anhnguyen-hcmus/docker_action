@@ -21,7 +21,7 @@ RUN conda env create -f /tmp/env.yml
 
 RUN ln -s /opt/conda/envs/MGPipe/bin/kraken2 /usr/local/bin/kraken2
 RUN ln -s /opt/conda/envs/MGPipe/bin/bracken /usr/local/bin/bracken
-
+RUN ln -s /opt/conda/envs/MGPipe/bin/kraken-biom /usr/local/bin/kraken-biom
 
 SHELL ["/bin/bash", "-c"]
 
