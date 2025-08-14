@@ -23,9 +23,10 @@ RUN ln -s /opt/conda/envs/MGPipe/bin/kraken2 /usr/local/bin/kraken2
 RUN ln -s /opt/conda/envs/MGPipe/bin/bracken /usr/local/bin/bracken
 RUN ln -s /opt/conda/envs/MGPipe/bin/kraken-biom /usr/local/bin/kraken-biom
 RUN ln -s /opt/conda/envs/MGPipe/bin/humann /usr/local/bin/humann
+RUN ln -s /opt/conda/envs/MGPipe/bin/diamond /usr/local/bin/diamond
 
 SHELL ["/bin/bash", "-c"]
 
-CMD ["conda", "run", "-n", "MGPipe", "humann", "--version"]
+CMD ["conda", "run", "-n", "MGPipe", "diamond", "--version"]
 
 ##updating samtools and bedtools -2
