@@ -36,12 +36,21 @@
 FROM continuumio/miniconda3
 
 COPY env.yml /tmp/env.yml
-RUN conda env create -f /tmp/env.yml
 
-RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/humann /usr/local/bin/humann
+# show env.yml in build log for debugging
+RUN echo "---- env.yml ----" && cat /tmp/env.yml && echo "---- end env.yml ----"
+
+# install mamba and create env (mamba first; fallback to conda with --debug)
+RUN conda install -n base -c conda-forge mamba -y && \
+    mamba env create -f /tmp/env.yml -y || (echo "mamba failed, trying conda (debug)" && conda env create -f /tmp/env.yml --debug)
+
+# create safe symlinks (ignore if not present)
+RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/humann /usr/local/bin/humann || true
+RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/glpsol /usr/local/bin/glpsol || true
+RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/diamond /usr/local/bin/diamond || true
+RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/humann_config /usr/local/bin/humann_config || true
 
 SHELL ["/bin/bash", "-c"]
-
 CMD ["conda", "run", "-n", "Humman_v4.0.0.alpha", "humann", "--version"]
 
-#3
+#4
