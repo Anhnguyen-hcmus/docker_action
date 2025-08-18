@@ -25,7 +25,7 @@ RUN ln -s /opt/conda/envs/MGPipe/bin/kraken-biom /usr/local/bin/kraken-biom
 RUN ln -s /opt/conda/envs/MGPipe/bin/humann /usr/local/bin/humann
 RUN ln -s /opt/conda/envs/MGPipe/bin/diamond /usr/local/bin/diamond
 RUN ln -s /opt/conda/envs/MGPipe/bin/humann_config /usr/local/bin/humann_config
-RUN ln -s /opt/conda/envs/MGPipe/bin/humann_renorm_table /usr/local/bin/glpsol
+RUN ln -s /opt/conda/envs/MGPipe/bin/glpsol /usr/local/bin/glpsol
 
 SHELL ["/bin/bash", "-c"]
 
