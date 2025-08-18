@@ -43,3 +43,5 @@ RUN ln -s /opt/conda/envs/Humman_v4.0.0.alpha/bin/humann /usr/local/bin/humann
 SHELL ["/bin/bash", "-c"]
 
 CMD ["conda", "run", "-n", "Humman_v4.0.0.alpha", "humann", "--version"]
+
+#2
