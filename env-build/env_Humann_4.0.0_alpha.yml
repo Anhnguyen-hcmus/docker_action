@@ -1,4 +1,4 @@
-name: Humman_v4.0.0.alpha
+name: /data/vinamit/ENV/Humman_v4.0.0.alpha
 channels:
   - biobakery
   - conda-forge

@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v4
       - name: build image
         run: |
-          docker build ./api/ -t anhnguyenhcmus/mgpipe:1.0.0
+          docker build ./api/ -t anhnguyenhcmus/humann:4.0.0.alpha
       - name: push image to docker hub
         run: |
           docker login -u anhnguyenhcmus -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push anhnguyenhcmus/mgpipe:1.0.0
+          docker push anhnguyenhcmus/humann:4.0.0.alpha
