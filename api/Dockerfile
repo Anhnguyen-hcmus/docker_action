@@ -49,8 +49,9 @@ RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann /usr/local/bin/humann || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/glpsol /usr/local/bin/glpsol || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/diamond /usr/local/bin/diamond || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann_config /usr/local/bin/humann_config || true
+RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/metaphlan /usr/local/bin/metaphlan || true
 
 SHELL ["/bin/bash", "-c"]
-CMD ["conda", "run", "-n", "Humman_v4.0.0", "humann", "--version"]
+CMD ["conda", "run", "-n", "Humman_v4.0.0", "metaphlan", "--version"]
 
 #7
