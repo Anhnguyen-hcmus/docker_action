@@ -50,8 +50,9 @@ RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/glpsol /usr/local/bin/glpsol || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/diamond /usr/local/bin/diamond || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann_config /usr/local/bin/humann_config || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/metaphlan /usr/local/bin/metaphlan || true
+RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/bowtie2 /usr/local/bin/bowtie2 || true
 
 SHELL ["/bin/bash", "-c"]
-CMD ["conda", "run", "-n", "Humman_v4.0.0", "metaphlan", "--version"]
+CMD ["conda", "run", "-n", "Humman_v4.0.0", "bowtie2", "--version"]
 
 #7
