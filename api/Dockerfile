@@ -51,11 +51,10 @@ RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/diamond /usr/local/bin/diamond || tr
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann_config /usr/local/bin/humann_config || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/metaphlan /usr/local/bin/metaphlan || true
 RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/bowtie2 /usr/local/bin/bowtie2 || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann_join_tables /usr/local/bin/humann_join_tables || true
-RUN ln -s /data/vinamit/ENV/Humann_v3.9/lib/python3.12/site-packages/metaphlan/utils/read_fastx.py /opt/conda/envs/Humman_v4.0.0/lib/python3.12/site-packages/metaphlan/utils/read_fastx.py || true
+
 
 
 SHELL ["/bin/bash", "-c"]
 CMD ["conda", "run", "-n", "Humman_v4.0.0", "bowtie2", "--version"]
 
-#8
+#10
