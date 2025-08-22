@@ -45,16 +45,16 @@ RUN conda install -n base -c conda-forge mamba -y && \
     mamba env create -f /tmp/env.yml -y || (echo "mamba failed, trying conda (debug)" && conda env create -f /tmp/env.yml --debug)
 
 # create safe symlinks (ignore if not present)
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann /usr/local/bin/humann || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/glpsol /usr/local/bin/glpsol || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/diamond /usr/local/bin/diamond || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/humann_config /usr/local/bin/humann_config || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/metaphlan /usr/local/bin/metaphlan || true
-RUN ln -s /opt/conda/envs/Humman_v4.0.0/bin/bowtie2 /usr/local/bin/bowtie2 || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann /usr/local/bin/humann || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/glpsol /usr/local/bin/glpsol || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/diamond /usr/local/bin/diamond || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann_config /usr/local/bin/humann_config || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/metaphlan /usr/local/bin/metaphlan || true
+RUN ln -s /opt/conda/envs/mgpipe_env/bin/bowtie2 /usr/local/bin/bowtie2 || true
 
 
 
 SHELL ["/bin/bash", "-c"]
-CMD ["conda", "run", "-n", "Humman_v4.0.0", "bowtie2", "--version"]
+CMD ["conda", "run", "-n", "mgpipe_env", "bowtie2", "--version"]
 
-#10
+#11
