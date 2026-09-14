@@ -1,60 +1,22 @@
-# ##bowtie_2.5.4 Dockerfile
-# FROM continuumio/miniconda3
+FROM continuumio/miniconda3:latest
 
-# COPY env.yml /tmp/env.yml
-# RUN conda env create -f /tmp/env.yml
+ENV CONDA_ENV=fragmentomics-task1
+ENV PATH=/opt/conda/envs/${CONDA_ENV}/bin:/opt/conda/bin:${PATH}
 
-# RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bowtie2 /usr/local/bin/bowtie2
-# RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/samtools /usr/local/bin/samtools
-# RUN ln -s /opt/conda/envs/bowtie_2.5.4/bin/bedtools /usr/local/bin/bedtools
+COPY env.yml /tmp/env.yml
 
-# SHELL ["/bin/bash", "-c"]
+# Install mamba in the base environment and create the environment from env.yml.
+RUN conda install --yes --quiet -n base -c conda-forge mamba \
+	&& mamba env create --file /tmp/env.yml \
+	&& conda clean --all --yes \
+	&& rm -f /tmp/env.yml
 
-# CMD ["conda", "run", "-n", "bowtie_2.5.4", "bowtie2", "--version"]
+# Fail the image build if the declared runtime is incomplete.
+RUN python --version \
+	&& samtools --version \
+	&& nextflow -version \
+	&& python -c "import matplotlib, numpy, pandas, pysam, seaborn; print('Python packages: OK')"
 
-# ##updating samtools and bedtools -2
-# ##bowtie_2.5.4 Dockerfile
-# FROM continuumio/miniconda3
+WORKDIR /workspace
 
-# COPY env.yml /tmp/env.yml
-# RUN conda env create -f /tmp/env.yml
-
-# RUN ln -s /opt/conda/envs/MGPipe/bin/kraken2 /usr/local/bin/kraken2
-# RUN ln -s /opt/conda/envs/MGPipe/bin/bracken /usr/local/bin/bracken
-# RUN ln -s /opt/conda/envs/MGPipe/bin/kraken-biom /usr/local/bin/kraken-biom
-# RUN ln -s /opt/conda/envs/MGPipe/bin/humann /usr/local/bin/humann
-# RUN ln -s /opt/conda/envs/MGPipe/bin/diamond /usr/local/bin/diamond
-# RUN ln -s /opt/conda/envs/MGPipe/bin/humann_config /usr/local/bin/humann_config
-# RUN ln -s /opt/conda/envs/MGPipe/bin/glpsol /usr/local/bin/glpsol
-
-# SHELL ["/bin/bash", "-c"]
-
-# CMD ["conda", "run", "-n", "MGPipe", "glpsol", "--version"]
-
-# # ##updating samtools and bedtools -2
-# ##humann Dockerfile
-# FROM continuumio/miniconda3
-
-# COPY env.yml /tmp/env.yml
-
-# # show env.yml in build log for debugging
-# RUN echo "---- env.yml ----" && cat /tmp/env.yml && echo "---- end env.yml ----"
-
-# # install mamba and create env (mamba first; fallback to conda with --debug)
-# RUN conda install -n base -c conda-forge mamba -y && \
-#     mamba env create -f /tmp/env.yml -y || (echo "mamba failed, trying conda (debug)" && conda env create -f /tmp/env.yml --debug)
-
-# # create safe symlinks (ignore if not present)
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann /usr/local/bin/humann || true
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/glpsol /usr/local/bin/glpsol || true
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/diamond /usr/local/bin/diamond || true
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann_config /usr/local/bin/humann_config || true
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/metaphlan /usr/local/bin/metaphlan || true
-# RUN ln -s /opt/conda/envs/mgpipe_env/bin/bowtie2 /usr/local/bin/bowtie2 || true
-
-
-
-# SHELL ["/bin/bash", "-c"]
-# CMD ["conda", "run", "-n", "mgpipe_env", "bowtie2", "--version"]
-
-# #11
+CMD ["bash"]
