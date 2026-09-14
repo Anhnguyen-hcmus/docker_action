@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v4
       - name: build image
         run: |
-          docker build ./api/ -t anhnguyenhcmus/humann:4.0.0.alpha
+          docker build ./api/ -t anhnguyenhcmus/task1
       - name: push image to docker hub
         run: |
           docker login -u anhnguyenhcmus -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push anhnguyenhcmus/humann:4.0.0.alpha
+          docker push anhnguyenhcmus/task1

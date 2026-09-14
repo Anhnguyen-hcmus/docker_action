@@ -31,30 +31,30 @@
 
 # CMD ["conda", "run", "-n", "MGPipe", "glpsol", "--version"]
 
-# ##updating samtools and bedtools -2
-##humann Dockerfile
-FROM continuumio/miniconda3
+# # ##updating samtools and bedtools -2
+# ##humann Dockerfile
+# FROM continuumio/miniconda3
 
-COPY env.yml /tmp/env.yml
+# COPY env.yml /tmp/env.yml
 
-# show env.yml in build log for debugging
-RUN echo "---- env.yml ----" && cat /tmp/env.yml && echo "---- end env.yml ----"
+# # show env.yml in build log for debugging
+# RUN echo "---- env.yml ----" && cat /tmp/env.yml && echo "---- end env.yml ----"
 
-# install mamba and create env (mamba first; fallback to conda with --debug)
-RUN conda install -n base -c conda-forge mamba -y && \
-    mamba env create -f /tmp/env.yml -y || (echo "mamba failed, trying conda (debug)" && conda env create -f /tmp/env.yml --debug)
+# # install mamba and create env (mamba first; fallback to conda with --debug)
+# RUN conda install -n base -c conda-forge mamba -y && \
+#     mamba env create -f /tmp/env.yml -y || (echo "mamba failed, trying conda (debug)" && conda env create -f /tmp/env.yml --debug)
 
-# create safe symlinks (ignore if not present)
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann /usr/local/bin/humann || true
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/glpsol /usr/local/bin/glpsol || true
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/diamond /usr/local/bin/diamond || true
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann_config /usr/local/bin/humann_config || true
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/metaphlan /usr/local/bin/metaphlan || true
-RUN ln -s /opt/conda/envs/mgpipe_env/bin/bowtie2 /usr/local/bin/bowtie2 || true
+# # create safe symlinks (ignore if not present)
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann /usr/local/bin/humann || true
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/glpsol /usr/local/bin/glpsol || true
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/diamond /usr/local/bin/diamond || true
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/humann_config /usr/local/bin/humann_config || true
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/metaphlan /usr/local/bin/metaphlan || true
+# RUN ln -s /opt/conda/envs/mgpipe_env/bin/bowtie2 /usr/local/bin/bowtie2 || true
 
 
 
-SHELL ["/bin/bash", "-c"]
-CMD ["conda", "run", "-n", "mgpipe_env", "bowtie2", "--version"]
+# SHELL ["/bin/bash", "-c"]
+# CMD ["conda", "run", "-n", "mgpipe_env", "bowtie2", "--version"]
 
-#11
+# #11
